@@ -1,0 +1,8 @@
+# Dependency directories
+node_modules/
+# ignore VS code 
+.vscode
+# ignore DS_store 
+.DS_Store
+# hide env file 
+.env 
