@@ -14,7 +14,10 @@ User.hasMany(Stocks, {
 });
 
 
-Project.belongsTo(User, {
+News.belongsTo(User, {
+  foreignKey: 'user_id'
+});
+Stocks.belongsTo(User, {
   foreignKey: 'user_id'
 });
 
