@@ -3,6 +3,7 @@ const { User, Stocks, News } = require('../models');
 
 const userData = require('./userData.json');
 const newsData = require('./newsData.json');
+// stockData is not being used yet
 const stocksData = require('./stocksData.json');
 
 const seedDatabase = async () => {
