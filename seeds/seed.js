@@ -15,9 +15,16 @@ const seedDatabase = async () => {
   });
 
   // more updating here
-  for (const project of newsData) {
+  for (const news of newsData) {
     await News.create({
-      ...project,
+      ...news,
+      user_id: users[Math.floor(Math.random() * users.length)].id,
+    });
+  }
+  // added for loop for stocksData
+  for (const stocks of stocksData) {
+    await Stocks.create({
+      ...stocks,
       user_id: users[Math.floor(Math.random() * users.length)].id,
     });
   }
