@@ -5,12 +5,12 @@ const Stocks = require('./Stocks');
 // update the foreign keys????
 User.hasMany(News, {
   foreignKey: 'user_id',
-  onDelete: 'CASCADE'
+
 });
 
 User.hasMany(Stocks, {
   foreignKey: 'user_id',
-  onDelete: 'CASCADE'
+  
 });
 
 

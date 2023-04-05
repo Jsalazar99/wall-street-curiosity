@@ -1,6 +1,19 @@
 const router = require('express').Router();
-const { Project } = require('../../models');
+const { News } = require('../../models');
 const withAuth = require('../../utils/auth');
+
+router.get('/', async (req, res) => {
+  try {
+    const newsData = await News.findAll({
+
+    })
+    const news = newsData.map((news) => news.get({ plain: true }));
+  res.status(200).json(news);
+  }
+  catch (err) {
+    res.status(400).json(err);
+  }
+}); 
 
 router.post('/', withAuth, async (req, res) => {
   try {
