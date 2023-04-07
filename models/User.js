@@ -37,6 +37,20 @@ User.init(
         len: [8],
       },
     },
+    /*stocks_id: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      get() {
+        return this.getDataValue('stocks_id').split(';')
+      },
+      set(val) {
+        this.setDataValue('stocks_id', val.join(';'));
+      },
+    },
+    references: {
+      model: 'stocks',
+      key: 'id',
+    }, */
   },
   {
     hooks: {

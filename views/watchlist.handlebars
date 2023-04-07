@@ -1,48 +1,72 @@
-<div class="row">
-  <div class="col-auto">
+<div class='row'>
+  <div class='col-auto'>
     <h2>Welcome, {{name}}!</h2>
   </div>
 </div>
 
-<div class="row mt-4">
-  <div class="col-md-6">
+<div class='row mt-4'>
+  <div class='col-md-6'>
     <h3>Here is your WatchList!:</h3>
 
-    <form class="form new-project-form">
-      <div class="form-group">
-        <label for="project-name">WatchList Name:</label>
-        <input class="form-input" type="text" id="project-name" name="project-name" />
+    <form class='form new-project-form'>
+      <div class='form-group'>
+        <label for='project-name'>WatchList Name:</label>
+        <input
+          class='form-input'
+          type='text'
+          id='project-name'
+          name='project-name'
+        />
       </div>
-      <div class="form-group">
-        <label for="project-funding">needed funding ($):</label>
-        <input class="form-input" type="number" id="project-funding" name="project-funding" />
+      <div class='form-group'>
+        <label for='project-funding'>needed funding ($):</label>
+        <input
+          class='form-input'
+          type='number'
+          id='project-funding'
+          name='project-funding'
+        />
       </div>
-      <div class="form-group">
-        <label for="project-desc">description:</label>
-        <textarea class="form-input" id="project-desc" name="project-desc"></textarea>
+      <div class='form-group'>
+        <label for='project-desc'>description:</label>
+        <textarea
+          class='form-input'
+          id='project-desc'
+          name='project-desc'
+        ></textarea>
       </div>
-      <div class="form-group">
-        <button type="submit" class="btn btn-primary">Create</button>
+      <div class='form-group'>
+        <button type='submit' class='btn btn-primary'>Create</button>
       </div>
     </form>
   </div>
 
   {{#if projects.length}}
-  <div class="col-md-6 project-list">
-    <h3>Current Projects:</h3>
+    <div class='col-md-6 project-list'>
+      <h3>Current Projects:</h3>
 
-    {{#each projects as |project|}}
-    <div class="row mb-2">
-      <div class="col-md-8">
-        <h4><a href="/project/{{project.id}}">{{project.name}}</a></h4>
-      </div>
-      <div class="col-md-4">
-        <button class="btn btn-sm btn-danger" data-id="{{project.id}}">DELETE</button>
+      {{#each projects as |project|}}
+        <div class='row mb-2'>
+          <div class='col-md-8'>
+            <h4><a href='/project/{{project.id}}'>{{project.name}}</a></h4>
+          </div>
+          <div class='col-md-4'>
+            <button
+              class='btn btn-sm btn-danger'
+              data-id='{{project.id}}'
+            >DELETE</button>
+          </div>
+        </div>
+      {{/each}}
+
+      <!---button class='btn btn-info btn-block' id='remove-stock'>
+        Remove Stock<i class='material-icons right'>send</i>
+      </button>-->
+      <div>
+        <a href='/stocks'>Search for Stocks</a>
       </div>
     </div>
-    {{/each}}
-  </div>
   {{/if}}
 </div>
 
-<script src="./js/profile.js"></script>
+<script src='./js/profile.js'></script>
