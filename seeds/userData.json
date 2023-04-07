@@ -2,7 +2,8 @@
   {
     "name": "Sal",
     "email": "sal@hotmail.com",
-    "password": "password12345"
+    "password": "password12345",
+    "stocks_id": "1" 
   },
   {
     "name": "Lernantino",
