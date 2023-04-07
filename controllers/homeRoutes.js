@@ -1,39 +1,22 @@
 const router = require('express').Router();
-const { News, User } = require('../models');
+const { Stocks, User } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
   console.log('home routes');
   try {
     // Get all projects and JOIN with user data
-    const newsData = await News.findAll({
-      include: [
-        {
-          model: User,
-          // attributes: ['name'],
-        },
-      ],
-    }); 
-
-    // Serialize data so the template can read it
-    const news = newsData.map((news) => news.get({ plain: true }));
-
-    // Pass serialized data and session flag into template
-    /*  res.render('homepage', { 
-      projects, 
-      logged_in: req.session.logged_in 
-    });  */
-    console.log(news);
-    res.render('test', {news})
+   
+ res.render('login')
 
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-router.get('/project/:id', async (req, res) => {
+router.get('/user/:id', async (req, res) => {
   try {
-    const projectData = await Project.findByPk(req.params.id, {
+    const userData = await User.findByPk(req.params.id, {
       include: [
         {
           model: User,
@@ -42,10 +25,10 @@ router.get('/project/:id', async (req, res) => {
       ],
     });
 
-    const project = projectData.get({ plain: true });
+    const userLogin = userData.get({ plain: true });
 
-    res.render('project', {
-      ...project,
+    res.render('watchlist', {
+      ...userLogin,
       logged_in: req.session.logged_in
     });
   } catch (err) {
@@ -54,17 +37,17 @@ router.get('/project/:id', async (req, res) => {
 });
 
 // Use withAuth middleware to prevent access to route
-router.get('/profile', withAuth, async (req, res) => {
+router.get('/watchlist', withAuth, async (req, res, next) => {
   try {
     // Find the logged in user based on the session ID
     const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ['password'] },
-      include: [{ model: Project }],
+      include: [{ model: Stocks }],
     });
 
     const user = userData.get({ plain: true });
 
-    res.render('profile', {
+    res.render('watchlist', {
       ...user,
       logged_in: true
     });
@@ -73,10 +56,10 @@ router.get('/profile', withAuth, async (req, res) => {
   }
 });
 
-router.get('/login', (req, res) => {
+router.get('login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
-    res.redirect('/profile');
+    res.redirect('/watchlist');
     return;
   }
 
