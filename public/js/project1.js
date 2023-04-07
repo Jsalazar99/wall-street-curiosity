@@ -140,22 +140,22 @@ searchForm.addEventListener("submit", (e) => {
 
 // Use a fetch call to gather information from the API
 // use local storage to save watchlist stocks
-const watchListButtons = document.getElementById('watch-list-buttons')
-populateWatchlist()
-function populateWatchlist() {
-  // read watch-list from local storage
-  const arrayFromStorage = JSON.parse(localStorage.getItem("watch-list"));
+// const watchListButtons = document.getElementById('watch-list-buttons')
+// populateWatchlist()
+// function populateWatchlist() {
+//   // read watch-list from local storage
+//   const arrayFromStorage = JSON.parse(localStorage.getItem("watch-list"));
 
-  if (arrayFromStorage) {
-    // 
-    watchListButtons.innerHTML = ''
-    for (var i = 0; i < arrayFromStorage.length; i++) {
-      const button = document.createElement('button')
-      button.innerText = arrayFromStorage[i]
-      button.addEventListener('click', (e) => {
-        stockTicker(e.target.textContent)
-      })
-      watchListButtons.append(button)
-    }
-  }
-}
+//   if (arrayFromStorage) {
+//     // 
+//     watchListButtons.innerHTML = ''
+//     for (var i = 0; i < arrayFromStorage.length; i++) {
+//       const button = document.createElement('button')
+//       button.innerText = arrayFromStorage[i]
+//       button.addEventListener('click', (e) => {
+//         stockTicker(e.target.textContent)
+//       })
+//       watchListButtons.append(button)
+//     }
+//   }
+// }
