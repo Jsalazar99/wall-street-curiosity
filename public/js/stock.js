@@ -1,5 +1,5 @@
 // Creating cards for stock listings
-if (!data.feed) {
+/* if (!data.feed) {
     console.log("No Results");
     search.innerHTML = "<h3>No results found, search again!</h3>";
 } else {
@@ -7,10 +7,12 @@ if (!data.feed) {
 
 
     // POST for addStock btn event listener.  
-    if (name && needed_funding && description) {
+    //const addStock = document.querySelector("#add-stock");
+
+    if (description) {
         const response = await fetch(`/api/projects`, {
           method: 'POST',
-          body: JSON.stringify({ name, needed_funding, description }),
+          body: JSON.stringify({ description }),
           headers: {
             'Content-Type': 'application/json',
           },
@@ -24,10 +26,31 @@ if (!data.feed) {
       }
     };
 
-    document
-  .querySelector('.new-project-form')
-  .addEventListener('submit', newFormHandler);
-    
+    document.querySelector('#add-stock').addEventListener('submit', newFormHandler);
+    */
+    const addButton = document.querySelector('#add-stock');
+addButton.addEventListener('click', async (event) => {
+  event.preventDefault();
+  
+  const addStock = document.querySelector('#search-input').value.trim(); 
+
+  if (addStock) {
+    const response = await fetch(`/api/stocks`, {
+      method: 'POST',
+      body: JSON.stringify({ addStock }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (response.ok) {
+      document.location.replace('/watchlist');
+    } else {
+      alert('Failed to add stock!');
+    }
+  }
+});
+
 
     // change the variable names here for stock handlebars     
     // var articleEl = document.querySelector(".current-news");

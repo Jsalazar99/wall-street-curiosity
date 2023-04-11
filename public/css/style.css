@@ -1,4 +1,5 @@
-header, .project:not(:last-child) {
+header,
+.project:not(:last-child) {
   border-bottom: 1px solid #ccc;
 }
 
@@ -22,3 +23,34 @@ header, .project:not(:last-child) {
   font-weight: bold;
   margin-left: -5px;
 }
+/* project 2 code added */
+h1 a {
+  color: #2d3e50;
+}
+.btn a:hover,
+.btn a:visited {
+  color: #fff;
+  text-decoration: none;
+}
+.btn.btn-info {
+  background-color: #2d3e50;
+}
+.current-prices {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 4em 0px;
+}
+.current-prices h4 {
+  margin: 0;
+  margin-right: 30px;
+  text-transform: uppercase;
+}
+.current-prices p {
+  margin-right: 30px;
+}
+/* add for BG image? */
+/* body {
+  background-image: url(https://www.shutterstock.com/image-illustration/closeup-view-stock-market-data-260nw-1402151111.jpg);
+  background-repeat: no-repeat;
+  background-size: contain;
+} */
