@@ -69,7 +69,7 @@
   .current-news,
   .watch-list,
   .p-1 {
-    background-color: #26a69a;
+    background-color: #638394;
     display: block;
     color: #fff;
     height: fit-content;
@@ -113,7 +113,7 @@
   }
   .current-news .card {
     box-shadow: var(--boxy);
-    background-color: #26a69a;
+    background-color: #77b0c0;
     padding: 1em;
     border-radius: 5px;
   }
@@ -141,7 +141,7 @@
     width: 15%;
     height: 200%;
     margin-top: 1em;
-    /* background: #26a69a; */
+    background: #486978;
     padding-bottom: 1em !important;
   }
   footer,
