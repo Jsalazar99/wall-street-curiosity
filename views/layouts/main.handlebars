@@ -25,16 +25,16 @@
     <header class="display-flex justify-space-between align-center p-2">
       <h1>
         <span role="img" aria-label="money">💸</span>
-        <a href="/">Fund My Project!</a>
+        <a href="/">Wall Street Curiosity?</a>
       </h1>
       <nav>
         <!-- Conditionally render login or logout links -->
         {{#if logged_in}}
-          <a href="/stocks">stocks</a> |
+          <!--<a href="/stocks">stocks</a> |-->
           <a href="/watchlist">watchlist</a> |
         <button class="no-button" id="logout">logout</button>
         {{else}}
-        <a href="/login">login</a>
+        <a href="/">login</a>
         {{/if}}
       </nav>
     </header>

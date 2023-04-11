@@ -7,7 +7,8 @@ router.get('/', async (req, res) => {
   try {
     // Get all projects and JOIN with user data
 
-    res.render('homepage');
+    //res.render('homepage');
+    res.render('login');
   } catch (err) {
     res.status(500).json(err);
   }
@@ -23,8 +24,8 @@ router.get('/stocks', async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
-});
-
+}); 
+/*
 router.get('/watchlist', async (req, res) => {
   try {
     // Get all projects and JOIN with user data
@@ -35,7 +36,7 @@ router.get('/watchlist', async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
-});
+}); */
 router.get('/user/:id', async (req, res) => {
   try {
     const userData = await User.findByPk(req.params.id, {
