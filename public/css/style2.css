@@ -11,15 +11,15 @@
   }
   body {
     font-family: sans-serif;
-    background-color: blueviolet;
+    background-color: rgb(88, 81, 95);
   }
   header {
-    background: rgb(25, 200, 48);
+    background: rgb(51, 60, 52);
     background: linear-gradient(
       0deg,
-      rgb(38, 166, 154) 10%,
-      rgb(26, 176, 51) 100%,
-      rgba(0, 212, 255, 1) 100%
+      rgb(247, 249, 249) 10%,
+      rgb(152, 155, 153) 100%,
+      rgb(39, 39, 39) 100%
     );
     color: #fff;
     text-shadow: 0.5px 0.5px #333;
@@ -69,7 +69,7 @@
   .current-news,
   .watch-list,
   .p-1 {
-    background-color: #26a69a;
+    background-color: #638394;
     display: block;
     color: #fff;
     height: fit-content;
@@ -113,7 +113,7 @@
   }
   .current-news .card {
     box-shadow: var(--boxy);
-    background-color: #26a69a;
+    background-color: #77b0c0;
     padding: 1em;
     border-radius: 5px;
   }
@@ -141,7 +141,7 @@
     width: 15%;
     height: 200%;
     margin-top: 1em;
-    /* background: #26a69a; */
+    background: #486978;
     padding-bottom: 1em !important;
   }
   footer,
