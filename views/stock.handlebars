@@ -18,7 +18,7 @@
     <h3>{{stock}}</h3>
   {{/each}}
 
-  <h4 class='text-primary'>Stock Watchers Search Engine</h4>
+  <h4 class='text-primary'>Search for your Stock</h4>
   <form id='search-form' class='mb-2'>
     <input id='search-input' type='text' placeholder='Search!' />
     <button class='btn btn-info btn-block' id='search-button'>
@@ -40,10 +40,6 @@
   <i class='small material-icons'>access_time</i>
   <p id='prevClose'></p>
 </div>
-<button class='btn btn-info btn-block' id='add-stock'>
-  Add Stock<i class='material-icons right'>send</i>
-</button>
-<a href='/watchlist'>Back to Watchlist</a>
 <!--<button class="btn btn-info btn-block" id="remove-stock">
               Remove Stock<i class="material-icons right">send</i>
             </button>-->
@@ -53,5 +49,10 @@
 </div>
 <div class='current-news col l8 m7 s10 offset-l3 offset-m4 offset-s1'>
 </div>
+
+<button class='btn btn-info btn-block' id='add-stock'>
+  Add Stock<i class='material-icons right'>send</i>
+</button>
+<a href='/watchlist'>Back to Watchlist</a>
 
 <script src='/js/project1.js'></script>
