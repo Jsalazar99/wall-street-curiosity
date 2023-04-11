@@ -30,7 +30,7 @@ router.get('/watchlist', async (req, res) => {
     // Get all projects and JOIN with user data
     const watchlistData = await Stocks.findAll();
     const plainStocks = watchlistData.map((watchlist) => watchlist.get({ plain: true }));
-    const stocks=['hi','bye', 'cry']
+    const watchlist=['hi','bye', 'cry']
     res.render('stock', {watchlist});
   } catch (err) {
     res.status(500).json(err);
