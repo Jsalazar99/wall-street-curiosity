@@ -51,6 +51,21 @@ addButton.addEventListener('click', async (event) => {
   }
 });
 
+const deleteButton = async (event) => {
+  if (event.target.hasAttribute('data-id')) {
+    const id = event.target.getAttribute('data-id');
+
+    const response = await fetch(`/api/stocks/${id}`, {
+      method: 'DELETE',
+    });
+
+    if (response.ok) {
+      document.location.replace('/watchlist');
+    } else {
+      alert('Failed to delete project');
+    }
+  }
+};
 
     // change the variable names here for stock handlebars     
     // var articleEl = document.querySelector(".current-news");
