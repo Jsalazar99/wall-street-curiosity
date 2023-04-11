@@ -28,11 +28,11 @@
 
     document.querySelector('#add-stock').addEventListener('submit', newFormHandler);
     */
-    const addButton = document.querySelector('#add-stock');
+const addButton = document.querySelector('#add-stock');
 addButton.addEventListener('click', async (event) => {
   event.preventDefault();
-  
-  const addStock = document.querySelector('#search-input').value.trim(); 
+
+  const addStock = document.querySelector('#search-input').value.trim();
 
   if (addStock) {
     const response = await fetch(`/api/stocks`, {
@@ -66,6 +66,17 @@ const deleteButton = async (event) => {
     }
   }
 };
+
+// Attach addStock function to the add-stock button
+document.querySelector('#add-stock')
+  .addEventListener('click', addStock);
+
+// Attach deleteButton function to all elements with a data-id attribute
+document.querySelectorAll('[data-id]')
+  .forEach(element => {
+    element.addEventListener('click', deleteButton);
+  });
+
 
     // change the variable names here for stock handlebars     
     // var articleEl = document.querySelector(".current-news");
