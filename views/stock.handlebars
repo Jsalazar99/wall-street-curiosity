@@ -13,42 +13,45 @@
   </p>
 </div> --}}
 
-  <div class="bg-light p-3 col l5 m10 s10">
-          <h4 class="text-primary">Stock Watchers Search Engine</h4>
-          <form id="search-form" class="mb-2">
-            <input id="search-input" type="text" placeholder="Search!" />
-            <button class="btn btn-info btn-block" id="search-button">
-              Search<i class="material-icons right">send</i>
-            </button>
-          </form>
-        </div>
+<div class='bg-light p-3 col l5 m10 s10'>
+  {{#each stocks as |stock|}}
+    <h3>{{stock}}</h3>
+  {{/each}}
 
-       <div class="current-prices col l8 m7 s10 offset-l3 offset-m4 offset-s1">
-        <h4 id="symbol">Your Stock Information</h4>
-        <i class="small material-icons">attach_money</i>
-        <p id="currentP"></p>
-        <i class="small material-icons">trending_up</i>
-        <p id="highP"></p>
-        <i class="small material-icons">trending_down</i>
-        <p id="lowP"></p>
-        <i class="small material-icons">add_alert</i>
-        <p id="openP"></p>
-        <i class="small material-icons">access_time</i>
-        <p id="prevClose"></p>
-      </div>
+  <h4 class='text-primary'>Stock Watchers Search Engine</h4>
+  <form id='search-form' class='mb-2'>
+    <input id='search-input' type='text' placeholder='Search!' />
+    <button class='btn btn-info btn-block' id='search-button'>
+      Search<i class='material-icons right'>send</i>
+    </button>
+  </form>
+</div>
 
-      <button class="btn btn-info btn-block" id="add-stock">
-              Add Stock<i class="material-icons right">send</i>
-            </button>
-            <a href="/profile">Back to Watchlist</a>
-            <!--<button class="btn btn-info btn-block" id="remove-stock">
+<div class='current-prices col l8 m7 s10 offset-l3 offset-m4 offset-s1'>
+  <h4 id='symbol'>Your Stock Information</h4>
+  <i class='small material-icons'>attach_money</i>
+  <p id='currentP'></p>
+  <i class='small material-icons'>trending_up</i>
+  <p id='highP'></p>
+  <i class='small material-icons'>trending_down</i>
+  <p id='lowP'></p>
+  <i class='small material-icons'>add_alert</i>
+  <p id='openP'></p>
+  <i class='small material-icons'>access_time</i>
+  <p id='prevClose'></p>
+</div>
+<button class='btn btn-info btn-block' id='add-stock'>
+  Add Stock<i class='material-icons right'>send</i>
+</button>
+<a href='/watchlist'>Back to Watchlist</a>
+<!--<button class="btn btn-info btn-block" id="remove-stock">
               Remove Stock<i class="material-icons right">send</i>
             </button>-->
-      
-        <div class="news-header col l8 m7 s10 offset-l3 offset-m4 offset-s1">
-        <h4>Latest News</h4>
-      </div>
-      <div class="current-news col l8 m7 s10 offset-l3 offset-m4 offset-s1">
-      </div>
-    </div>
-    <script src="/js/project1.js"></script>
+
+<div class='news-header col l8 m7 s10 offset-l3 offset-m4 offset-s1'>
+  <h4>Latest News</h4>
+</div>
+<div class='current-news col l8 m7 s10 offset-l3 offset-m4 offset-s1'>
+</div>
+
+<script src='/js/project1.js'></script>

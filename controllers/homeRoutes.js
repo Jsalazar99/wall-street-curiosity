@@ -6,14 +6,37 @@ router.get('/', async (req, res) => {
   console.log('home routes');
   try {
     // Get all projects and JOIN with user data
-   
- res.render('login')
 
+    //res.render('homepage');
+    res.render('login');
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
+router.get('/stocks', async (req, res) => {
+  try {
+    // Get all projects and JOIN with user data
+    const stocksData = await Stocks.findAll();
+    const plainStocks = stocksData.map((stock) => stock.get({ plain: true }));
+    const stocks=['hi','bye', 'cry']
+    res.render('stock', {stocks});
+  } catch (err) {
+    res.status(500).json(err);
+  }
+}); 
+/*
+router.get('/watchlist', async (req, res) => {
+  try {
+    // Get all projects and JOIN with user data
+    const watchlistData = await Stocks.findAll();
+    const plainStocks = watchlistData.map((watchlist) => watchlist.get({ plain: true }));
+    const stocks=['hi','bye', 'cry']
+    res.render('stock', {watchlist});
+  } catch (err) {
+    res.status(500).json(err);
+  }
+}); */
 router.get('/user/:id', async (req, res) => {
   try {
     const userData = await User.findByPk(req.params.id, {
@@ -29,7 +52,7 @@ router.get('/user/:id', async (req, res) => {
 
     res.render('watchlist', {
       ...userLogin,
-      logged_in: req.session.logged_in
+      logged_in: req.session.logged_in,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -49,7 +72,7 @@ router.get('/watchlist', withAuth, async (req, res, next) => {
 
     res.render('watchlist', {
       ...user,
-      logged_in: true
+      logged_in: true,
     });
   } catch (err) {
     res.status(500).json(err);
