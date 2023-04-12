@@ -3,10 +3,22 @@ const { Stocks } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 // this file is copied from projectRoutes.js file 
+
+// get method for listing all stocks in DB
+router.get('/', withAuth, async (req, res) => {
+  const stocksData = await Stocks.findAll();
+  
+  const plainStocks = stocksData.map((stock) => stock.get({ plain: true }));
+  res.json(plainStocks);
+
+});
+
 router.post('/', withAuth, async (req, res) => {
+  console.log(req.body);
   try {
     const newStock = await Stocks.create({
-      ...req.body,
+      //...req.body,
+      symbol: req.body.addStock,
       user_id: req.session.user_id,
     });
 

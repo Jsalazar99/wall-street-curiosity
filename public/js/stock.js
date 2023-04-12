@@ -6,11 +6,11 @@ var tickerApiKey = "cfe7pg9r01qp08kufpagcfe7pg9r01qp08kufpb0";
 var priceApiKey = "cfe7pg9r01qp08kufpagcfe7pg9r01qp08kufpb0";
 */
 
-require('dotenv').config();
+//require('dotenv').config();
 //process.env.SESSION_SECRET
-const newsAPI = process.env.NEWSAPIKEY;
-const tickerAPI = process.env.TICKERAPIKEY;
-const priceAPI = process.env.PRICEAPIKEY;
+const newsAPI = "Y05JOHE1Z7ATCKW7"; //process.env.NEWSAPIKEY;
+const tickerAPI = "cfe7pg9r01qp08kufpagcfe7pg9r01qp08kufpb0"; //process.env.TICKERAPIKEY;
+const priceAPI = "cfe7pg9r01qp08kufpagcfe7pg9r01qp08kufpb0"; //process.env.PRICEAPIKEY;
 
 var searchStock = document.querySelector("#searchStocks");
 var ticker = document.querySelector("#search-input");
