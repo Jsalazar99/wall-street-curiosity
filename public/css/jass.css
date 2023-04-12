@@ -884,7 +884,7 @@ a:hover {
 }
 
 .text-info {
-  color: #1bbc9b !important;
+  color: #7285a0 !important;
 }
 
 .text-danger {
@@ -921,11 +921,11 @@ a:hover {
 }
 
 .bg-info {
-  background-color: #1bbc9b !important;
+  background-color: #4f5655 !important;
 }
 
 .bg-danger {
-  background-color: #e64c66 !important;
+  background-color: #617586 !important;
 }
 
 .bg-light {
@@ -945,7 +945,7 @@ a:hover {
 }
 
 .bg-link {
-  background-color: #1b89bc !important;
+  background-color: #648898 !important;
 }
 
 /* DISPLAY */
@@ -1018,7 +1018,7 @@ a:hover {
 }
 
 .btn.btn-danger {
-  background-color: #e64c66;
+  background-color: #839fb8;
   color: #ffffff;
 }
 
