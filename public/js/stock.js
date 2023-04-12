@@ -42,6 +42,7 @@ addButton.addEventListener('click', async (event) => {
         'Content-Type': 'application/json',
       },
     });
+    console.log(addStock);
 
     if (response.ok) {
       document.location.replace('/watchlist');
@@ -58,6 +59,7 @@ const deleteButton = async (event) => {
     const response = await fetch(`/api/stocks/${id}`, {
       method: 'DELETE',
     });
+    console.log(response);
 
     if (response.ok) {
       document.location.replace('/watchlist');
