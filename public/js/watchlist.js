@@ -25,7 +25,6 @@ const deleteButton = async (event) => {
   }
 };
 
-document.querySelectorAll('[data-id]')
-  .forEach(element => {
-    element.addEventListener('click', deleteButton);
-  });
+document.querySelectorAll('[data-id]').forEach((element) => {
+  element.addEventListener('click', deleteButton);
+});
