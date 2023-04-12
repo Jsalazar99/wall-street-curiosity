@@ -28,6 +28,23 @@
 
     document.querySelector('#add-stock').addEventListener('submit', newFormHandler);
     */
+
+    const { Chart } = await import('chart.js');
+    require(['path/to/chartjs/dist/chart.umd.js'], function(Chart){
+      const myChart = new Chart(ctx, {...});
+  });
+  require(['chartjs'], function(Chart) {
+    require(['moment'], function() {
+        require(['chartjs-adapter-moment'], function() {
+            new Chart(ctx, {...});
+        });
+    });
+});
+
+
+
+
+
 const addButton = document.querySelector('#add-stock');
 addButton.addEventListener('click', async (event) => {
   event.preventDefault();
