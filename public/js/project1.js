@@ -139,8 +139,10 @@ searchForm.addEventListener("submit", (e) => {
   stockTicker(ticker.value)
 });
 
+// create event listner for adding stock to watchlist section 
+//const addStock = document.querySelector("#add-stock");
 
-const addStock = document.querySelector("#add-stock");
+
 
 
 // Use a fetch call to gather information from the API
