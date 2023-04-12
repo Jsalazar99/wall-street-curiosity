@@ -1,33 +1,124 @@
-// Creating cards for stock listings
-/* if (!data.feed) {
-    console.log("No Results");
-    search.innerHTML = "<h3>No results found, search again!</h3>";
-} else {
-    search.innerHTML = "";
+window.localStorage;
+// Create variable for news API/ alphavantage
+var newsApiKey = "Y05JOHE1Z7ATCKW7";
+// Create variables for ticker and price API/ Finhub
+var tickerApiKey = "cfe7pg9r01qp08kufpagcfe7pg9r01qp08kufpb0";
+var priceApiKey = "cfe7pg9r01qp08kufpagcfe7pg9r01qp08kufpb0";
 
+var searchStock = document.querySelector("#searchStocks");
+var ticker = document.querySelector("#search-input");
+var searchForm = document.querySelector("#search-form");
 
-    // POST for addStock btn event listener.  
-    //const addStock = document.querySelector("#add-stock");
+// Create a function to pull data from search button using the API's
+let stockTicker = function (search) {
 
-    if (description) {
-        const response = await fetch(`/api/projects`, {
-          method: 'POST',
-          body: JSON.stringify({ description }),
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
-    
-        if (response.ok) {
-          document.location.replace('/profile');
-        } else {
-          alert('Failed to create project');
+  console.log(search);
+
+  // Stock Name Data for stocks
+  fetch(`https://finnhub.io/api/v1/search?q=${search}&token=${tickerApiKey}`)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      console.log("first stock", data);
+    })
+    .catch();
+
+  // Gets Price Data for Stocks
+  fetch(`https://finnhub.io/api/v1/quote?symbol=${search}&token=${priceApiKey}`)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      console.log("stock price", data);
+      console.log(data.c);
+      // Dan says this needs to be in the scope, so I moved it here!
+      var symbol = document.querySelector("#symbol");
+      symbol.textContent = ` ${search}`;
+
+      var currentPrice = document.querySelector("#currentP");
+      currentPrice.textContent = ` Current Price: ${data.c}`;
+
+      var highP = document.querySelector("#highP");
+      highP.textContent = ` High Price: ${data.h}`;
+
+      var lowP = document.querySelector("#lowP");
+      lowP.textContent = ` Low Price: ${data.l}`;
+
+      var openP = document.querySelector("#openP");
+      openP.textContent = ` Open Price: ${data.o}`;
+
+      var prevClose = document.querySelector("#prevClose");
+      prevClose.textContent = ` Previous Close: ${data.pc}`;
+
+      var iconFloat = document.getElementsByClassName("small");
+      iconFloat.classList.add("icon-float");
+      
+
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+
+  // Pulls News data for stock ticker
+  fetch(
+    `https://www.alphavantage.co/query?function=NEWS_SENTIMENT&tickers=${search}&apikey=${newsApiKey}`
+  )
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      console.log("stock news", data);
+      console.log(data.feed);
+
+      if (!data.feed) {
+        console.log("No Results");
+        search.innerHTML = "<h3>No results found, search again!</h3>";
+      } else {
+        search.innerHTML = "";
+        // Creating cards for news articles
+        var articleEl = document.querySelector(".current-news");
+        articleEl.textContent = ''
+        for (var i = 0; i < 5; i++) {
+          var articleData = data.feed[i];
+
+          var cardBody = document.createElement("div");
+          var articletitle = document.createElement("h5");
+          var articleSummary = document.createElement("p");
+          var linkButtonEl = document.createElement("a");
+
+          cardBody.classList.add('card');
+          articleSummary.textContent = 'Summary: ' + articleData.summary
+          articletitle.textContent = 'Title: ' + articleData.title
+          linkButtonEl.textContent = 'Read More';
+          linkButtonEl.setAttribute('href', articleData.url);
+          linkButtonEl.setAttribute('target', '_blank');
+          linkButtonEl.classList.add('btn');
+
+          articleEl.appendChild(cardBody);
+          cardBody.appendChild(articletitle);
+          cardBody.appendChild(articleSummary);
+          cardBody.appendChild(linkButtonEl);
         }
       }
-    };
+    })
 
-    document.querySelector('#add-stock').addEventListener('submit', newFormHandler);
-    */
+    .catch();
+  // comment from Jesus - append ticker data into div
+  var currentSymbol = document.querySelector("#symbol");
+  currentSymbol.textContent = `Symbol: ${search}`;
+
+  // variable to include ALL stock info?
+  var stockInfo = document.querySelector(".current-prices");
+};
+
+// Create event listeners for the search
+searchForm.addEventListener("submit", (e) => {
+  e.preventDefault()
+  stockTicker(ticker.value)
+});
+
+// ADD Stock Button 
 const addButton = document.querySelector('#add-stock');
 addButton.addEventListener('click', async (event) => {
   event.preventDefault();
@@ -52,56 +143,6 @@ addButton.addEventListener('click', async (event) => {
   }
 });
 
-const deleteButton = async (event) => {
-  if (event.target.hasAttribute('data-id')) {
-    const id = event.target.getAttribute('data-id');
-
-    const response = await fetch(`/api/stocks/${id}`, {
-      method: 'DELETE',
-    });
-    console.log(response);
-
-    if (response.ok) {
-      document.location.replace('/watchlist');
-    } else {
-      alert('Failed to delete project');
-    }
-  }
-};
-
 // Attach addStock function to the add-stock button
 document.querySelector('#add-stock')
   .addEventListener('click', addStock);
-
-// Attach deleteButton function to all elements with a data-id attribute
-document.querySelectorAll('[data-id]')
-  .forEach(element => {
-    element.addEventListener('click', deleteButton);
-  });
-
-
-    // change the variable names here for stock handlebars     
-    // var articleEl = document.querySelector(".current-news");
-    // articleEl.textContent = ''
-    // for (var i = 0; i < 50; i++) {
-    //     var articleData = data.feed[i];
-
-    //     var cardBody = document.createElement("div");
-    //     var articletitle = document.createElement("h5");
-    //     var articleSummary = document.createElement("p");
-    //     var linkButtonEl = document.createElement("a");
-
-    //     cardBody.classList.add('card');
-    //     articleSummary.textContent = 'Summary: ' + articleData.summary
-    //     articletitle.textContent = 'Title: ' + articleData.title
-    //     linkButtonEl.textContent = 'Read More';
-    //     linkButtonEl.setAttribute('href', articleData.url);
-    //     linkButtonEl.setAttribute('target', '_blank');
-    //     linkButtonEl.classList.add('btn');
-
-    //     articleEl.appendChild(cardBody);
-    //     cardBody.appendChild(articletitle);
-    //     cardBody.appendChild(articleSummary);
-    //     cardBody.appendChild(linkButtonEl);
-    // }
-
