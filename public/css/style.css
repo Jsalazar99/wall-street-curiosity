@@ -60,3 +60,10 @@ h1 a {
 #search-input {
   background-color: white;
 }
+.project-list h4 {
+  text-align: center;
+  margin-top: 0;
+}
+.project-list h4 a {
+  color: #008000;
+}

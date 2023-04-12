@@ -1,9 +1,16 @@
-window.localStorage;
+/* window.localStorage;
 // Create variable for news API/ alphavantage
 var newsApiKey = "Y05JOHE1Z7ATCKW7";
 // Create variables for ticker and price API/ Finhub
 var tickerApiKey = "cfe7pg9r01qp08kufpagcfe7pg9r01qp08kufpb0";
 var priceApiKey = "cfe7pg9r01qp08kufpagcfe7pg9r01qp08kufpb0";
+*/
+
+//require('dotenv').config();
+//process.env.SESSION_SECRET
+const newsAPI = "Y05JOHE1Z7ATCKW7"; //process.env.NEWSAPIKEY;
+const tickerAPI = "cfe7pg9r01qp08kufpagcfe7pg9r01qp08kufpb0"; //process.env.TICKERAPIKEY;
+const priceAPI = "cfe7pg9r01qp08kufpagcfe7pg9r01qp08kufpb0"; //process.env.PRICEAPIKEY;
 
 var searchStock = document.querySelector("#searchStocks");
 var ticker = document.querySelector("#search-input");
@@ -15,7 +22,7 @@ let stockTicker = function (search) {
   console.log(search);
 
   // Stock Name Data for stocks
-  fetch(`https://finnhub.io/api/v1/search?q=${search}&token=${tickerApiKey}`)
+  fetch(`https://finnhub.io/api/v1/search?q=${search}&token=${tickerAPI}`)
     .then(function (response) {
       return response.json();
     })
@@ -25,7 +32,7 @@ let stockTicker = function (search) {
     .catch();
 
   // Gets Price Data for Stocks
-  fetch(`https://finnhub.io/api/v1/quote?symbol=${search}&token=${priceApiKey}`)
+  fetch(`https://finnhub.io/api/v1/quote?symbol=${search}&token=${priceAPI}`)
     .then(function (response) {
       return response.json();
     })
@@ -60,22 +67,9 @@ let stockTicker = function (search) {
       console.log(error);
     });
 
-
-    const { Chart } = await import('chart.js');
-    require(['path/to/chartjs/dist/chart.umd.js'], function(Chart){
-      const myChart = new Chart(ctx, {...});
-  });
-  require(['chartjs'], function(Chart) {
-    require(['moment'], function() {
-        require(['chartjs-adapter-moment'], function() {
-            new Chart(ctx, {...});
-        });
-    });
-});
-
   // Pulls News data for stock ticker
   fetch(
-    `https://www.alphavantage.co/query?function=NEWS_SENTIMENT&tickers=${search}&apikey=${newsApiKey}`
+    `https://www.alphavantage.co/query?function=NEWS_SENTIMENT&tickers=${search}&apikey=${newsAPI}`
   )
     .then(function (response) {
       return response.json();
@@ -159,3 +153,17 @@ addButton.addEventListener('click', async (event) => {
 // Attach addStock function to the add-stock button
 document.querySelector('#add-stock')
   .addEventListener('click', addStock);
+
+/*
+    const { Chart } = await import('chart.js');
+    require(['path/to/chartjs/dist/chart.umd.js'], function(Chart){
+      const myChart = new Chart(ctx, {...});
+  });
+  require(['chartjs'], function(Chart) {
+    require(['moment'], function() {
+        require(['chartjs-adapter-moment'], function() {
+            new Chart(ctx, {...});
+        });
+    });
+});  
+*/
