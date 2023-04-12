@@ -60,6 +60,19 @@ let stockTicker = function (search) {
       console.log(error);
     });
 
+
+    const { Chart } = await import('chart.js');
+    require(['path/to/chartjs/dist/chart.umd.js'], function(Chart){
+      const myChart = new Chart(ctx, {...});
+  });
+  require(['chartjs'], function(Chart) {
+    require(['moment'], function() {
+        require(['chartjs-adapter-moment'], function() {
+            new Chart(ctx, {...});
+        });
+    });
+});
+
   // Pulls News data for stock ticker
   fetch(
     `https://www.alphavantage.co/query?function=NEWS_SENTIMENT&tickers=${search}&apikey=${newsApiKey}`
