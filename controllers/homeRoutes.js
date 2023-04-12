@@ -19,7 +19,8 @@ router.get('/stocks', async (req, res) => {
     // Get all projects and JOIN with user data
     const stocksData = await Stocks.findAll();
     const plainStocks = stocksData.map((stock) => stock.get({ plain: true }));
-    const stocks=['hi','bye', 'cry']
+    // array for listing out stocks 
+    const stocks = [];
     res.render('stock', {stocks});
   } catch (err) {
     res.status(500).json(err);

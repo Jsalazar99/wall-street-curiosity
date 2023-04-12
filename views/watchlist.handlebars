@@ -7,8 +7,10 @@
 <div class='row mt-4'>
   <div class='col-md-6'>
     <h3>Here is your WatchList!:</h3>
+    <p>Cultivate your own watchlist of the stocks that you want to see! You can add stock on and delete them</p>
 
-    <form class='form new-project-form'>
+{{!-- NOT NEEDED --}}
+    {{!-- <form class='form new-project-form'>
       <div class='form-group'>
         <label for='project-name'>WatchList Name:</label>
         <input
@@ -36,10 +38,12 @@
         ></textarea>
       </div>
       <div class='form-group'>
-        <button type='submit' class='btn btn-primary'>Create</button>
+        <button type='submit' class='btn btn-primary'>Create
+          <i class='material-icons right'>create</i>
+        </button>
       </div>
     </form>
-  </div>
+  </div> --}}
 
   {{#if stocks.length}}
     <div class='col-md-6 project-list'>
@@ -48,25 +52,27 @@
       {{#each stocks as |stock|}}
         <div class='row mb-2'>
           <div class='col-md-8'>
-            <h4><a href='/stock/{{stock.id}}'>{{stock.name}}</a></h4>
+            <h4><a href='/stock/{{stocks.user_id}}'>{{stocks.symbol}}</a></h4>
           </div>
           <div class='col-md-4'>
             <button
               class='btn btn-sm btn-danger'
-              data-id='{{stock.id}}'
-            >DELETE</button>
+              data-id='{{stocks.id}}'
+            >Remove Stock<i class='material-icons right'>delete_forever</i>/button>
       
           </div>
         </div>
       {{/each}}
-
       <!---button class='btn btn-info btn-block' id='remove-stock'>
         Remove Stock<i class='material-icons right'>send</i>
       </button>-->
     </div>
   {{/if}}
       <div>
-        <a href='/stocks'>Search for Stocks</a>
+        <button class='btn btn-info btn-block' id='add-stock'>
+          <a href='/stocks'>Search for Stocks</a>
+          <i class='material-icons right'>search</i>
+</button>
       </div>
 </div>
 
