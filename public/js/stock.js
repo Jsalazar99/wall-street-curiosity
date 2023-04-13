@@ -8,12 +8,12 @@ var searchStock = document.querySelector("#searchStocks");
 var ticker = document.querySelector("#search-input");
 var searchForm = document.querySelector("#search-form");
 
-const data = {
+/* const data = {
   symbol: '',
   name: '',
   c: '',
   chartData: [] // add this property to the data object
-};
+}; */
 
 // Create a function to pull data from search button using the API's
 let stockTicker = function (search) {
@@ -102,7 +102,7 @@ let stockTicker = function (search) {
     .catch(error => console.error(error));
   */
   // function to update the chart with new data
-  function updateChart(chartData) {
+  /* function updateChart(chartData) {
     const ctx = document.getElementById('myChart');
 
     // create the chart with the updated data
@@ -124,7 +124,7 @@ let stockTicker = function (search) {
         }
       }
     });
-  }
+  } */
 
   // Pulls News data for stock ticker
   fetch(
