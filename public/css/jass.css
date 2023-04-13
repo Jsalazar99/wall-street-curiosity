@@ -1108,7 +1108,7 @@ a:hover {
   border-radius: calc(0.18rem - 1px) calc(0.18rem - 1px) 0 0;
 }
 
-form {
+/* form {
   width: 100%;
 }
 
@@ -1162,7 +1162,7 @@ form [type='radio'] {
 label form [type='checkbox'], label
 form [type='radio'] {
   display: inline-block;
-}
+} */
 
 .container {
   width: 85%;
