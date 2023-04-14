@@ -34,8 +34,11 @@ THEN I am taken to the Homepage
 Finnhub was used for searching with the stock ticker as well as getting the current price information.
 (https://finnhub.io/docs/api/introduction)
 
-AlphaVantage was use to search for the 5 most recent articles.
+AlphaVantage was used to search for the 5 most recent articles.
 (https://www.alphavantage.co/documentation/)
+
+ChartJS was used to display data images related to stock prices
+(https://www.chartjs.org/docs/latest/getting-started/)
 
 ### Application Tutorial
 Open `server.js` in your integrated terminal and run `npm i`.
@@ -44,11 +47,15 @@ Then run `npm run seed` to seed data to your database.
 Open the `schema.sql` file in the `db` folder to create your database with MySQL shell commands.
 
 ### Screenshots of Website
-![Home Page of Application]()
-![Watch List]()
-![Stock Page]()
+![Home Page of Application](./Assets/signup.png)
+![Watch List](./Assets/watchlist.png)
+![Stock Page](./Assets/stockinfo.png)
+
+### Links to Our Deployed Website and Github
 
 [Github for Wall Street Curiosity](https://github.com/Jsalazar99/wall-street-curiosity)
+
+
 [Heroku for Wall Streer Curiosity](https://wall-street-curiosity.herokuapp.com/)
 
 Created in collaboration with Johnny McGown, Katherine Reiner, Jesus Salazar, and Chelsey Valerio
