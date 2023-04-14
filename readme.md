@@ -1,9 +1,8 @@
 # Project 2
 ## Wall Street Curiosity
 
+### User Expectation
 What to expect with the completed Application:
-* As a user, I want see a homepage with the website title, brief desciprtion, some stock info, and a login in button in the top right.
-
 * As a user, I want to be able to login in to a webiste where I can view my saved watchlist of stocks.
 
 * As a user, when I view my watchlist, I will have the option to click on a stock and see the Stock Name, Current Price, High Price, Low Price, Open, and Previous Close. I will also see 2 buttons where I can "ADD A STOCK" and "DELET A STOCK".
@@ -25,11 +24,15 @@ WHEN I click "ADD A STOCK"
 THEN I am presented with a search bar to search by ticker symbol where I will get the Stock Name, Current Price, High Price, Low Price, Open, Previous Close, and the 5 most recent news articles
 WHEN I click "DELETE A STOCK"
 THEN I am ask which ticker symbol to delete.
-When I hover over a stock in the watchlist
-THEN a modal appears with Current Price, High Price, Low Price, Open, and Previous Close
 WHEN I click "Logout"
 THEN I am taken to the Homepage
 ```
+### Application Tutorial
+Open `server.js` in your integrated terminal and run `npm i`.
+Then run `npm run seed` to seed data to your database.
+
+Open the `schema.sql` file in the `db` folder to create your database with MySQL shell commands.
+
 ### API's Used for Project
 Finnhub was used for searching with the stock ticker as well as getting the current price information.
 (https://finnhub.io/docs/api/introduction)
@@ -37,19 +40,30 @@ Finnhub was used for searching with the stock ticker as well as getting the curr
 AlphaVantage was use to search for the 5 most recent articles.
 (https://www.alphavantage.co/documentation/)
 
-### Application Tutorial
-Open `server.js` in your integrated terminal and run `npm i`.
-Then run `npm run seed` to seed data to your database.
+Chartjs for stock information
+(https://www.chartjs.org/)
 
-Open the `schema.sql` file in the `db` folder to create your database with MySQL shell commands.
+### Technologies Used
+Here is a list of techonologies used in the applicaiton:
+* Heroku - Used for Deployment
+* VS Code - app developement
+* Insomnia - testing of app CRUD results
+* Github - app repository
+* MySQL - database development
+* Express.js - to create RESTful API
+* Node.js - to create RESTful API
+* Sequelize ORM
+* Handlebars.js
+* User Authentication - including express sessions and cookies
 
 ### Screenshots of Website
 ![Application Login](./assets/login.png)
 ![Watch List](./assets/watchlist.png)
 ![Stock Page](./assets/stocks.png)
 
-## Links to Deplyed Application
+### Links to Deployed Application
 [Github for Wall Street Curiosity](https://github.com/Jsalazar99/wall-street-curiosity)
-[Heroku for Wall Streer Curiosity](https://wall-street-curiosity.herokuapp.com/)
 
-Created in collaboration with Johnny McGown, Katherine Reiner, Jesus Salazar, and Chelsey Valerio
+[Heroku for Wall Street Curiosity](https://wall-street-curiosity.herokuapp.com/)
+
+*Created in collaboration with Johnny McGown, Katherine Reiner, Jesus Salazar, and Chelsey Valerio*
