@@ -1,21 +1,25 @@
-window.localStorage;
 // Create variable for news API/ alphavantage
-var newsApiKey = "Y05JOHE1Z7ATCKW7";
+var newsAPI = "Y05JOHE1Z7ATCKW7";
 // Create variables for ticker and price API/ Finhub
-var tickerApiKey = "cfe7pg9r01qp08kufpagcfe7pg9r01qp08kufpb0";
-var priceApiKey = "cfe7pg9r01qp08kufpagcfe7pg9r01qp08kufpb0";
+var tickerAPI = "cfe7pg9r01qp08kufpagcfe7pg9r01qp08kufpb0";
+var priceAPI = "cfe7pg9r01qp08kufpagcfe7pg9r01qp08kufpb0";
 
 var searchStock = document.querySelector("#searchStocks");
 var ticker = document.querySelector("#search-input");
 var searchForm = document.querySelector("#search-form");
 
+/* const data = {
+  symbol: '',
+  name: '',
+  c: '',
+  chartData: [] // add this property to the data object
+}; */
+
 // Create a function to pull data from search button using the API's
 let stockTicker = function (search) {
 
   console.log(search);
-
-  // Stock Name Data for stocks
-  fetch(`https://finnhub.io/api/v1/search?q=${search}&token=${tickerApiKey}`)
+  fetch(`/api/stocks/ticker-info?search=${search}`)
     .then(function (response) {
       return response.json();
     })
@@ -23,15 +27,30 @@ let stockTicker = function (search) {
       console.log("first stock", data);
     })
     .catch();
+  // Stock Name Data for stocks
+  // fetch(`https://finnhub.io/api/v1/search?q=${search}&token=${tickerAPI}`)
+  //   .then(function (response) {
+  //     return response.json();
+  //   })
+  //   .then(function (data) {
+  //     console.log("first stock", data);
+  //   })
+  //   .catch();
 
   // Gets Price Data for Stocks
-  fetch(`https://finnhub.io/api/v1/quote?symbol=${search}&token=${priceApiKey}`)
+  fetch(`https://finnhub.io/api/v1/quote?symbol=${search}&token=${priceAPI}`)
     .then(function (response) {
       return response.json();
     })
     .then(function (data) {
       console.log("stock price", data);
       console.log(data.c);
+
+      // update the data object with the retrieved data
+      data.symbol = search;
+      data.c = data.c;
+      data.chartData = data.chartData; // assuming the API response includes chart data
+
       // Dan says this needs to be in the scope, so I moved it here!
       var symbol = document.querySelector("#symbol");
       symbol.textContent = ` ${search}`;
@@ -53,31 +72,63 @@ let stockTicker = function (search) {
 
       var iconFloat = document.getElementsByClassName("small");
       iconFloat.classList.add("icon-float");
-      
 
+      // new code for CHARTJS fucntion 
+      // call function to update the chart with the retrieved chart data
+      updateChart(data.chartData);
     })
     .catch((error) => {
       console.log(error);
     });
+  //const currentPrice = document.querySelector('#current-price');
+  //const searchForm = document.querySelector('#search-form');
 
 
-    // import { Chart } from 'chart.js';
-    // require { Chart } from 'chart.js'
-    const { Chart } = require ('chart.js');
-    require(['path/to/chartjs/dist/chart.umd.js'], function(Chart){
-      const myChart = new Chart(ctx, {...});
-  });
-  require(['chartjs'], function(Chart) {
-    require(['moment'], function() {
-        require(['chartjs-adapter-moment'], function() {
-            new Chart(ctx, {...});
-        });
+
+  /* fetch(`https://api.example.com/${symbol}`)
+    .then(response => response.json())
+    .then(apiData => {
+      data.symbol = apiData.symbol;
+      data.name = apiData.name;
+      data.c = apiData.c;
+      data.chartData = apiData.chartData; // assuming the API response includes chart data
+      
+      // update the page with the retrieved data
+      //currentPrice.textContent = `Current Price: ${data.c}`;
+      
+      // call function to update the chart with the retrieved chart data
+      updateChart(data.chartData);
+    })
+    .catch(error => console.error(error));
+  */
+  // function to update the chart with new data
+  /* function updateChart(chartData) {
+    const ctx = document.getElementById('myChart');
+
+    // create the chart with the updated data
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['Current Price', 'High Price', 'Low Price', 'Open Price', 'Previous Close'],
+        datasets: [{
+          label: data.symbol,
+          data: chartData,
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
     });
-});
+  } */
 
   // Pulls News data for stock ticker
   fetch(
-    `https://www.alphavantage.co/query?function=NEWS_SENTIMENT&tickers=${search}&apikey=${newsApiKey}`
+    `https://www.alphavantage.co/query?function=NEWS_SENTIMENT&tickers=${search}&apikey=${newsAPI}`
   )
     .then(function (response) {
       return response.json();
@@ -161,3 +212,17 @@ addButton.addEventListener('click', async (event) => {
 // Attach addStock function to the add-stock button
 document.querySelector('#add-stock')
   .addEventListener('click', addStock);
+
+/*
+    const { Chart } = await import('chart.js');
+    require(['path/to/chartjs/dist/chart.umd.js'], function(Chart){
+      const myChart = new Chart(ctx, {...});
+  });
+  require(['chartjs'], function(Chart) {
+    require(['moment'], function() {
+        require(['chartjs-adapter-moment'], function() {
+            new Chart(ctx, {...});
+        });
+    });
+});  
+*/

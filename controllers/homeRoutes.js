@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/stocks', async (req, res) => {
+router.get('/stocks', withAuth, async (req, res, next) => {
   try {
     // Get all projects and JOIN with user data
     const stocksData = await Stocks.findAll();
@@ -51,7 +51,7 @@ router.get('/user/:id', async (req, res) => {
 
     const userLogin = userData.get({ plain: true });
 
-    res.render('watchlist', {
+    res.render('', {
       ...userLogin,
       logged_in: req.session.logged_in,
     });
@@ -67,10 +67,11 @@ router.get('/watchlist', withAuth, async (req, res, next) => {
     const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ['password'] },
       include: [{ model: Stocks }],
+
     });
 
     const user = userData.get({ plain: true });
-
+    console.log(user);
     res.render('watchlist', {
       ...user,
       logged_in: true,

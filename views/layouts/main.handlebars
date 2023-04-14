@@ -22,21 +22,23 @@
 
 <body>
   <div class="flex-column justify-space-around">
-    <header class="display-flex justify-space-between align-center p-2">
-      <h1>
-        <span role="img" aria-label="money">💸</span>
-        <a href="/">Wall Street Curiosity?</a>
-      </h1>
+    <header class="justify-space-between align-center p-2">
+      
       <nav class="nav-bar">
         <!-- Conditionally render login or logout links -->
         {{#if logged_in}}
           <!--<a href="/stocks">stocks</a> |-->
-          <a href="/watchlist">WatchList</a> |
-        <button class="no-button" id="logout">Logout</button>
+          <button class="no-button btn"><a href="/watchlist">WatchList</a></button> 
+          <button class="no-button btn"><a href="/stocks">Search</a></button> 
+        <button class="no-button btn" id="logout">Logout</button>
         {{else}}
-        <a href="/">login</a>
+        <button class="no-button btn"><a href="/">login</a></button>
         {{/if}}
       </nav>
+      <h1>
+        <span role="img" aria-label="money">📈</span>
+        <a href="/">Wall Street Curiosity?</a>
+      </h1>
     </header>
     <main class="container container-fluid mt-5">
       <!-- Render the sub layout -->
