@@ -61,7 +61,9 @@ let stockTicker = function (search) {
     });
 
 
-    const { Chart } = await import('chart.js');
+    // import { Chart } from 'chart.js';
+    // require { Chart } from 'chart.js'
+    const { Chart } = require ('chart.js');
     require(['path/to/chartjs/dist/chart.umd.js'], function(Chart){
       const myChart = new Chart(ctx, {...});
   });

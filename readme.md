@@ -44,10 +44,11 @@ Then run `npm run seed` to seed data to your database.
 Open the `schema.sql` file in the `db` folder to create your database with MySQL shell commands.
 
 ### Screenshots of Website
-![Home Page of Application]()
-![Watch List]()
-![Stock Page]()
+![Application Login](./assets/login.png)
+![Watch List](./assets/watchlist.png)
+![Stock Page](./assets/stocks.png)
 
+## Links to Deplyed Application
 [Github for Wall Street Curiosity](https://github.com/Jsalazar99/wall-street-curiosity)
 [Heroku for Wall Streer Curiosity](https://wall-street-curiosity.herokuapp.com/)
 
