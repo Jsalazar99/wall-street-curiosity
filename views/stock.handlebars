@@ -34,17 +34,16 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
 <script>
   const ctx = document.getElementById('myChart');
 
   new Chart(ctx, {
     type: 'line',
     data: {
-      labels: ['$', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-      datasets: [{}
-        label: `${search}`,
-        data: [12, 19, 3, 5, 2, 3],
+      labels: ['Current Price', 'High Price', 'Low Price', 'Open Price', 'Previous Close'],
+      datasets: [{
+        label: 'Stock Symbol',
+        data: [12, 19, 3, 5, 2],
         borderWidth: 1
       }]
     },
@@ -58,13 +57,13 @@
   });
 </script>
 
-
-
 <div class='news-header col l8 m7 s10 offset-l3 offset-m4 offset-s1'>
   <h4>Latest News</h4>
 </div>
 <div class='current-news col l8 m7 s10 offset-l3 offset-m4 offset-s1'>
 </div>
+
+<br /><hr />
 
 <div id="add-stock-button">
 <button class='btn btn-info btn-block' id='add-stock'>
@@ -75,5 +74,5 @@
 <button class='btn btn-info btn-block'>
   <a href='/watchlist'>Back to Watchlist<i class='material-icons right'>keyboard_return</i></a>
   </button>
-
+<br /><br />
 <script src='/js/stock.js'></script>

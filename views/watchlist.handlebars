@@ -5,8 +5,8 @@
 </div>
 
 <div class='row mt-4'>
-  <div class='col-md-6'>
-    <h3>Here is your WatchList!:</h3>
+  <div class='col-md-8'>
+    <h3>Here is your WatchList:</h3>
     <p>Cultivate your own watchlist of the stocks that you want to see! Click the button to search and your stocks, when you want to adjust your watchlist, just click Delete!</p>
 
 {{!-- NOT NEEDED --}}
@@ -46,7 +46,7 @@
   </div> --}}
 
   {{#if stocks.length}}
-    <div class='col-md-6 project-list'>
+    <div class='col-md-8 project-list'>
       <h3>Current Stocks:</h3>
 
       {{#each stocks as |stocks|}}
@@ -73,6 +73,7 @@
           <a href='/stocks'>Search for Stocks</a>
           <i class='material-icons right'>search</i>
 </button>
+  <br />
       </div>
 </div>
 

@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/stocks', async (req, res) => {
+router.get('/stocks', withAuth, async (req, res, next) => {
   try {
     // Get all projects and JOIN with user data
     const stocksData = await Stocks.findAll();

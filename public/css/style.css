@@ -27,7 +27,9 @@ header,
 h1 a {
   color: #2d3e50;
 }
-.btn a:hover,
+.btn a:hover {
+  color: #2d3e50 !important;
+}
 .btn a:visited {
   color: #fff;
   text-decoration: none;
@@ -48,9 +50,18 @@ h1 a {
 .current-prices p {
   margin-right: 30px;
 }
-
+.nav-bar {
+  padding: 0 1em;
+}
 .nav-bar, .btn {
   background-color: #2D3E50 !important;
+}
+.btn:hover {
+  background-color: #fff !important;
+  color: #2d3e50 !important;
+}
+.nav-bar .btn a:hover {
+  color: #2d3e50 !important;
 }
 
 .btn.btn-danger {
@@ -66,4 +77,5 @@ h1 a {
 }
 .project-list h4 a {
   color: #008000;
+  text-transform: uppercase;
 }
